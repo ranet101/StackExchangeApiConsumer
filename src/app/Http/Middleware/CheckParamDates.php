@@ -21,10 +21,10 @@ class CheckParamDates
         foreach($dateFields as $dateField)
             if($request->$dateField)
                 if(!$this->checkDateFormat($request->$dateField, "Y-m-d"))
-                    return response()->json(["error"=>true,"errorCode"=>1,"msg"=>"$dateField parameter is not valid: " . $request->$dateField]);
+                    return response()->json(["error"=>true,"errorCode"=>21,"msg"=>"$dateField parameter is not valid: " . $request->$dateField]);
         if($request->fromDate && $request->toDate)
             if(!$this->checkDiffDates($request->fromDate, $request->toDate))
-                return response()->json(["error"=>true,"errorCode"=>1,"msg"=>"dateFrom cannot be greater than dateTo"]);
+                return response()->json(["error"=>true,"errorCode"=>22,"msg"=>"dateFrom cannot be greater than dateTo"]);
         return $next($request);
     }
 
