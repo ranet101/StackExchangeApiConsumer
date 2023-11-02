@@ -16,4 +16,4 @@ use App\Http\Middleware\CheckParamDates as CheckParamDates;
 |
 */
 
-Route::get('/get/{tag?}/{fromDate?}/{toDate?}',[ApiController::class, 'get'])->middleware([CheckParamTag::class]);
+Route::get('/get/{tag?}/{fromDate?}/{toDate?}',[ApiController::class, 'get'])->middleware([CheckParamTag::class])->middleware([CheckParamDates::class]);
