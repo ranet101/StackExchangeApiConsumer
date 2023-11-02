@@ -36,3 +36,13 @@ services:
       - "${MYSQL_PORT}:${MYSQL_PORT}"
     volumes:
       - ${MYSQL_DATA_VOLUME}:/var/lib/mysql
+
+  db_seeder:
+    image: mysql:latest
+    volumes:
+      - ${DB_SEED}:/db.sql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    entrypoint: [ "bash", "-c", "sleep 10 && mysql --user=root --password=${MYSQL_ROOT_PASSWORD} --host=mysql --port=3306 ${MYSQL_DATABASE} < /db.sql && exit"] 
+    depends_on:
+      - mysql
