@@ -69,6 +69,8 @@ Put online all servers configured in _docker-compose.yml_ file
 ```
 sudo docker compose up -d
 ```
+*The _-d_ option launchs system in background. Removing it you will see the systyem stdrout.\
+
 Shutdown all servers
 ```
 sudo docker compose down
@@ -78,7 +80,10 @@ If config is changed you must recreate containers
 ```
 sudo docker compose up --force-recreate --build -d
 ```
-The _-d_ option launchs system in background. Removing it you will see the systyem stdrout.
+Connect to docker bash to execute artisan commands
+```
+sudo docker compose exec php-fpm bash
+```
 
 ## App
 ### Instalation
@@ -87,4 +92,29 @@ Install Laravel dependencies. From project folder type:
 sudo chmod -R 777 src
 cd src 
 sudo composer install
+```
+rename .env.example as .env. In _./src_ folder type:
+```
+cp .env.example .env
+```
+### Tests
+To launch tests you must connect to php-fpm bash, then launch them. In porject folder type the following to nnter container prompt:
+```
+sudo docker compose exec php-fpm bash
+```
+Once connected you will be in _/var/www/html_ image path. Launch all test typing:
+```
+php artisan test
+```
+You can pass just a test suite. It will try all tests in folder _./src/tests/[testsuite]_
+```
+php artisan test --testsuite=Feature
+```
+You can filter by testClass. It will try all tests in _./src/tests/[testsuite][test].php_
+```
+php artisan test --filter=AppTest
+```
+You can filter by testClass. It will launch concrete test from _./src/tests/[testsuite][test].php_
+```
+php artisan test --filter AppTest::appResponds
 ```
