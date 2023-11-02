@@ -136,8 +136,11 @@ When api responds an error the repsonds is in the following format
 {"error":true,"errorCode":[Int errorCode],"msg":[String error message]}
 ```
 #### Codes
-group by tens
-* **_20_** group is for param error 
-    * **_20_**: Tag param error test
-    * **_21_**: Date format error test
-    * **_22_**: Date diff error test
+Codes are grouped by tens.
+* **_2X_** Group is for param error
+    * **_20:_** Tag param error test
+    * **_21:_** Date format error test
+    * **_22:_** Date diff error test
+* **_3X_** Group is for api response error
+    * **_30:_** Stackexchange api error
+    * **_31:_** local api error
