@@ -116,7 +116,7 @@ php artisan test --filter=AppTest
 ```
 You can filter by testClass. It will launch concrete test from _./src/tests/[testsuite][test].php_
 ```
-php artisan test --filter AppTest::                        
+php artisan test --filter AppTest::appResponds                       
 ```
 Test list:
 * Suite Feature
