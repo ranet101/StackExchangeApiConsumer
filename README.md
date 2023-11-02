@@ -7,6 +7,7 @@ An StackExchange api consumer with ddbb cache system.
 * mysql
     * data
     * Dockerfile
+    * ddbb_seed.sql
 * src
     * app code
 * .env
@@ -14,13 +15,21 @@ An StackExchange api consumer with ddbb cache system.
 * docker-compose.yml   
 
 ### Infrastructure
-Uses docker with nginx, php and mysql containers.
-* Deploy and system launch config is especified in _docker-compose.yml_
-* Nginx is configurtaed using _./default.conf_ 
-* Php is configurated using _./php-fpm/Dockerfile_ 
-* Mysql is configurated using _./mysql/Dockerfile_\
+Uses docker with nginx, php, mysql as db_seeder containers. Deploy and system launch config is especified in _docker-compose.yml_. Below a service description list:
 
-All these services are configurable via _.env_ file and is not necesary to touch them. Use _.env_ file.
+_web_\
+Uses nginx as web server and it's configurated using _./default.conf_
+
+_php-fpm_\
+Php core and pdo_mysql lib is configurated using _./php-fpm/Dockerfile_ 
+
+_mysql_\
+Mysql serevr. It's configurated using _./mysql/Dockerfile_
+
+_db_seeder_\
+Database seed with ddbb structure and test data _./mysql/ddbb_seed.sql_.
+
+All these services are configurable via _.env_ variables and is not necesary to touch them. Use _.env_ file.
 
 ### Configuration (.env)
 Database parameters, servers and paths can by configurated within editing _.env_ file
@@ -39,6 +48,8 @@ MYSQL_PASSWORD=zAwhJrHTsxZIpoF
 MYSQL_ROOT_PASSWORD=TK5mDzheFSX8lhwhsmrRIqTwr2cfI
 MYSQL_PORT=3306
 MYSQL_DATA_VOLUME=./mysql/data
+
+DB_SEED=./mysql/ddbb_seed.sql
 ```
 It's also posible to edit _docker-compose.yml_ file directly, but is not recomended.
 
