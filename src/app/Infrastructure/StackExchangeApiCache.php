@@ -48,7 +48,7 @@ class StackExchangeApiCache
 
     public static function insert($apiResponse, $tag, $fromDate = false, $toDate = false)
     {
-        $query = new StackExancheApiResponses;
+        $query = new StackExchangeApiResponses;
         $query->tag = $tag;
         $query->from_date = ($fromDate) ? $fromDate : NULL;
         $query->to_date = ($toDate) ? $toDate : NULL;
