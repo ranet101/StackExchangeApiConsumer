@@ -16,7 +16,7 @@ class CheckParamTag
     public function handle(Request $request, Closure $next): Response
     {
         if(!$request->tag)
-            return response()->json(["errorCode"=>1,"msg"=>"Parameter tag is mandatory"]);
+            return response()->json(["error"=>true,"errorCode"=>20,"msg"=>"Parameter tag is mandatory"]);
         return $next($request);
     }
 }
