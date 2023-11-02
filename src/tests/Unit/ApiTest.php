@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use App\Infrastructure\StackExchangeApi;
 
 class ApiTest extends TestCase
 {
