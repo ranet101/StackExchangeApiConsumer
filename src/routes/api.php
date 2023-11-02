@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController as ApiController;
+use App\Http\Middleware\CheckParamTag as CheckParamTag;
+use App\Http\Middleware\CheckParamDates as CheckParamDates;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/get/{tag?}/{fromDate?}/{toDate?}',[ApiController::class, 'get'])->middleware([CheckParamTag::class]);
