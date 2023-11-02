@@ -121,8 +121,12 @@ php artisan test --filter AppTest::appResponds
 Test list:
 * Suite Feature
     * Apptest
-        * **_appResponds()_**: Checks if base url responds statusCode 400
-        * **_apiResponds()_**: Checks if base api url responds statusCode 404
+        * **_appResponds():_** Checks if base url responds statusCode 400
+        * **_apiResponds():_** Checks if base api url responds statusCode 404
+        * **_stackExchangeApiTagCall():_** 
+        * **_stackExchangeApiFromDateCall():_** 
+        * **_stackExchangeApiToDateCall():_** 
+        * **_stackExchangeApiEmptyResponse():_**         
 * Suite Unit
     * ApiTest
         * **_tagParamError()_**: Checks if tag param error is working
