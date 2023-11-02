@@ -97,6 +97,16 @@ rename .env.example as .env. In _./src_ folder type:
 ```
 cp .env.example .env
 ```
+### App links
+##### From api (just once. It will cached in database and next time is served from it)
+http://localhost/api/get/python\
+http://localhost/api/get/python/2023-01-02\
+http://localhost/api/get/python/2023-01-02/2023-01-09
+##### From cache (exists in ddbb)
+http://localhost/api/get/javascript\
+http://localhost/api/get/javascript/2023-01-01\
+http://localhost/api/get/javascript/2023-01-02/2023-01-02
+
 ### Tests
 To launch tests you must connect to php-fpm bash, then launch them. In porject folder type the following to nnter container prompt:
 ```
@@ -145,6 +155,14 @@ Codes are grouped by tens.
     * **_20:_** Tag param error test
     * **_21:_** Date format error test
     * **_22:_** Date diff error test
-* **_3X_** Group is for api response error
-    * **_30:_** Stackexchange api error
-    * **_31:_** local api error
+* **_3X_** Group is for api response errors
+    * **_30:_** Stackexchange api errors
+    * **_31:_** local api errors
+* **_4X_** Group is for DDBB cache system errors
+
+
+### Todo
+* DDBB unique key NULL bug
+* Put params in response 
+* Put api endpoint url in response if data comos from Exchange api
+* Put caducity in api response whe data comes from Exchange api
