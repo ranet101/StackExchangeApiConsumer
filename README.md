@@ -41,14 +41,39 @@ MYSQL_PORT=3306
 MYSQL_DATA_VOLUME=./mysql/data
 ```
 It's also posible to edit _docker-compose.yml_ file directly, but is not recomended.
-## Install
+
+### Installation
 Clone repo
 ```
 git clone https://github.com/ranet101/StackExchangeApiConsumer.git
 ```
-Install/launc containers
+Install/launch containers
 ```
 cd StackExchangeApiConsumer
 sudo docker compose up -d
 ```
+
+### System and server managment
+Put online all servers configured in _docker-compose.yml_ file
+```
+sudo docker compose up -d
+```
+Shutdown all servers
+```
+sudo docker compose down
+```
+
+If config is changed you must recreate containers
+```
+sudo docker compose up --force-recreate --build -d
+```
+The _-d_ option launchs system in background. Removing it you will see the systyem stdrout.
+
 ## App
+### Instalation
+Install Laravel dependencies. From project folder type:
+```
+sudo chmod -R 777 src
+cd src 
+sudo composer install
+```
