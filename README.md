@@ -116,5 +116,28 @@ php artisan test --filter=AppTest
 ```
 You can filter by testClass. It will launch concrete test from _./src/tests/[testsuite][test].php_
 ```
-php artisan test --filter AppTest::appResponds
+php artisan test --filter AppTest::                        
 ```
+Test list:
+* Suite Feature
+    * Apptest
+        * **_appResponds()_**: Checks if base url responds statusCode 400
+        * **_apiResponds()_**: Checks if base api url responds statusCode 404
+* Suite Unit
+    * ApiTest
+        * **_tagParamError()_**: Checks if tag param error is working
+        * **_dateFromFormatError()_**: Checks if dateFrom format error is working
+        * **_dateToFormatError()_**: Checks if dateTo format error is working
+        * **_dateFromGtDateTo()_**: Checks if dateFrom > dateTo error is working
+
+### Error codes
+When api responds an error the repsonds is in the following format
+```
+{"error":true,"errorCode":[Int errorCode],"msg":[String error message]}
+```
+#### Codes
+group by tens
+* **_20_** group is for param error 
+    * **_20_**: Tag param error test
+    * **_21_**: Date format error test
+    * **_22_**: Date diff error test
